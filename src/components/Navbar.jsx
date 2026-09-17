@@ -6,7 +6,7 @@ function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold">
-          🎬 MovieExplorer 
+          🎬 Cinevia
         </Link>
 
         {/* Navigation */}

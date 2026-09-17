@@ -3,13 +3,13 @@ import MovieCard from "../components/MovieCard";
 
 function Movies() {
   const [movies, setMovies] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [search, setSearch] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const response = await fetch("https://api.tvmaze.com/shows");
-      const data = await response.json();
+      const res = await fetch("https://api.tvmaze.com/shows");
+      const data = await res.json();
 
       setMovies(data);
     };
@@ -18,10 +18,10 @@ function Movies() {
   }, []);
 
   useEffect(() => {
-    if (!searchQuery.trim()) {
+    if (!search.trim()) {
       const fetchMovies = async () => {
-        const response = await fetch("https://api.tvmaze.com/shows");
-        const data = await response.json();
+        const res = await fetch("https://api.tvmaze.com/shows");
+        const data = await res.json();
 
         setMovies(data);
       };
@@ -31,11 +31,11 @@ function Movies() {
     }
 
     const searchMovies = async () => {
-      const response = await fetch(
-        `https://api.tvmaze.com/search/shows?q=${searchQuery}`,
+      const res = await fetch(
+        `https://api.tvmaze.com/search/shows?q=${search}`,
       );
 
-      const data = await response.json();
+      const data = await res.json();
 
       const searchResults = data.map((item) => item.show);
 
@@ -43,7 +43,7 @@ function Movies() {
     };
 
     searchMovies();
-  }, [searchQuery]);
+  }, [search]);
 
   const handleSeeDetails = (movie) => {
     setSelectedMovie(movie);
@@ -75,8 +75,8 @@ function Movies() {
 
           <input
             type="text"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
             placeholder="Search for a movie..."
             className="w-full rounded-xl border border-gray-300 bg-white py-4 pl-12 pr-4 text-gray-900 outline-none transition focus:border-gray-500"
           />
@@ -86,7 +86,7 @@ function Movies() {
       {/* Movie Grid */}
       <section>
         <h2 className="mb-6 text-2xl font-bold text-gray-900">
-          {searchQuery ? "Search Results" : "All Movies"}
+          {search ? "Search Results" : "All Movies"}
         </h2>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

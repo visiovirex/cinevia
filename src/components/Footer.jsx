@@ -7,17 +7,17 @@ function Footer() {
         <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
           {/* Application Name */}
           <Link to="/" className="text-xl font-bold">
-            🎬 MovieExplorer
+            🎬 Cinevia
           </Link>
 
           {/* Copyright */}
           <p className="text-sm text-gray-400">
-            © 2026 MovieExplorer. All rights reserved.
+            © 2026 Cinevia. All rights reserved.
           </p>
 
           {/* GitHub */}
           <a
-            href="#"
+            href="https://github.com/visiovirex/cinevia"
             className="text-sm text-gray-400 transition hover:text-white"
           >
             GitHub
